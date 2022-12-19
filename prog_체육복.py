@@ -1,3 +1,4 @@
+#commit 메시지 수정
 from collections import Counter
 
 def solution(n, lost, reserve):
