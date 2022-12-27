@@ -1,12 +1,11 @@
 def solution(num_list, n):
     answer = []
-    l = []
-    for i,x in enumerate(num_list):
-        if i%n == n-1:
-            l.append(x)
-            answer.append(l)
-            l=[]
+    addd = []
+    for i, x in enumerate(num_list, start = 1):
+        if i%n == 0:
+            addd.append(x)
+            answer.append(addd)
+            addd=[]
         else:
-            l.append(x)
-            
+            addd.append(x)
     return answer
