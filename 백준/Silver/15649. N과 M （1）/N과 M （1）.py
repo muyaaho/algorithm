@@ -1,14 +1,15 @@
-n, m = map(int,input().split())
-ans = []
+n,m= map(int, input().split())
+arr = []
 
-def func():
-    if len(ans)==m:
-        print(*ans)
+def f():
+    if len(arr)==m:
+        print(*arr)
         return
-    for x in range(1,n+1):
-        if x not in ans:
-            ans.append(x)
-            func()
-            ans.pop()
 
-func()
+    for x in range(1, n+1):
+        if x not in arr:
+            arr.append(x)
+            f()
+            arr.pop(-1)
+
+f()
