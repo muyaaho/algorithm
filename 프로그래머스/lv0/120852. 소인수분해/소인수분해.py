@@ -10,4 +10,4 @@ def solution(n):
             d += 1
             
     
-    return sorted(list(answer))
+    return sorted(answer)
