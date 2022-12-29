@@ -1,11 +1,3 @@
 def solution(numbers, direction):
     answer = []
-    if direction == "right":
-        answer.append(numbers[-1])
-        for x in numbers[:-1]:
-            answer.append(x)
-    else:
-        for x in numbers[1:]:
-            answer.append(x)
-        answer.append(numbers[0])
-    return answer
+    return [numbers[-1]]+numbers[:-1] if direction == "right" else numbers[1:]+[numbers[0]]
