@@ -1,10 +1,2 @@
 def solution(num_list, n):
-    answer = []
-    arr= []
-    for x in num_list:
-        if len(arr) != n:
-            arr.append(x)
-        if len(arr) == n:
-            answer.append(arr)
-            arr=[]
-    return answer
+    return [num_list[ix-n:ix] for ix in range(n, len(num_list)+1, n)]
