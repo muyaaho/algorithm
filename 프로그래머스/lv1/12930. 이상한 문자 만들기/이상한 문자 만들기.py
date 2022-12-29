@@ -1,7 +1,6 @@
 def solution(s):
     answer = ''
-    slist = s.split(' ')
-    for word in slist:
+    for word in s.split(' '):
         for i, x in enumerate(word):
             if i%2==0:
                 answer += x.upper()
