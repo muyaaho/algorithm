@@ -1,5 +1,8 @@
 def solution(array, n):
-    array.sort()
-    answer = sorted(array, key=lambda x: abs(n-x))
-    print(answer)
-    return answer[0]
+    array.sort(key=lambda x: (abs(x-n), x-n))
+    return array[0]
+
+# def solution(array, n):
+#     array.sort(key = lambda x : (abs(x-n), x-n))
+#     answer = array[0]
+#     return answer
