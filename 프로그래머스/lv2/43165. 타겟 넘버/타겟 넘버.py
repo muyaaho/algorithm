@@ -1,17 +1,16 @@
+from collections import Counter
+
 def solution(numbers, target):
-    arr = []
+    answer = []
     
-    def fun(now, a):
-        if len(a) == 0:
-            if now==target:
-                arr.append(now)
+    def func(arr, x):
+        # arr가 없으면 리스트에 값 append 하기
+        if not arr:
+            answer.append(x)
             return
-        
-        fun(now + a[0], a[1:])
-        fun(now - a[0], a[1:])
+        # 아니면 더하거나 빼서 함수 진행
+        func(arr[1:], x+arr[0])
+        func(arr[1:], x-arr[0])
     
-    fun(numbers[0], numbers[1:])
-    fun(-numbers[0], numbers[1:])
-    
-    
-    return len(arr)
+    func(numbers, 0)
+    return Counter(answer)[target]
