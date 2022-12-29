@@ -1,10 +1,8 @@
 n = int(input())
-narr = set(map(int,input().split()))
+a = set(map(int, input().split()))
 m = int(input())
-marr = list(map(int,input().split()))
+check = list(map(int, input().split()))
 
-for x in marr:
-    if x in narr:
-        print(1)
-    else:
-        print(0)    
+for x in check:
+    if x in a: print(1)
+    else: print(0)
