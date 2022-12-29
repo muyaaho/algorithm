@@ -8,6 +8,4 @@ def solution(n):
             n //= d
         else:
             d += 1
-            
-    
     return sorted(answer)
