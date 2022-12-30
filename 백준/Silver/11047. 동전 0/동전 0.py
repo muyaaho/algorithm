@@ -1,15 +1,11 @@
 n, k = map(int, input().split())
-l = []
-answer = 0
-for x in range(n):
-    l.append(int(input()))
+a = [int(input()) for _ in range(n)]
 
-l = list(filter(lambda x : x<=k, l))
+count = 0
+for money in a[::-1]:
+    if k>=money:
+        count += k//money
+        k %= money
+    if k<=0: break
 
-for x in l[::-1]:
-    answer += k//x
-    k%=x
-    if k<=0:
-        break
-
-print(answer)
+print(count)
