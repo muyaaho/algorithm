@@ -1,0 +1,10 @@
+print('NFC West       W   L  T')
+print('-----------------------')
+print('Seattle        13  3  0')
+print('San Francisco  12  4  0')
+print('Arizona        10  6  0')
+print('St. Louis      7   9  0')
+print()
+print('NFC North      W   L  T')
+print('-----------------------\nGreen Bay      8   7  1\nChicago        8   8  0\nDetroit        7   9  0\nMinnesota      5  10  1')
+
