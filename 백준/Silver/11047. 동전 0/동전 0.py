@@ -1,11 +1,10 @@
 n, k = map(int, input().split())
-a = [int(input()) for _ in range(n)]
+moneys = [int(input()) for _ in range(n)]
+moneys = [x for x in moneys if x<=k]
+answer = 0
 
-count = 0
-for money in a[::-1]:
-    if k>=money:
-        count += k//money
-        k %= money
-    if k<=0: break
+for m in moneys[::-1]:
+    answer += k//m
+    k %= m
 
-print(count)
+print(answer)
