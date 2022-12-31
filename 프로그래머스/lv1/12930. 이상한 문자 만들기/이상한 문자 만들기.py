@@ -1,10 +1,10 @@
 def solution(s):
     answer = ''
     for word in s.split(' '):
-        for i, x in enumerate(word):
+        for i, c in enumerate(word):
             if i%2==0:
-                answer += x.upper()
+                answer += c.upper()
             else:
-                answer += x.lower()
+                answer += c.lower()
         answer += ' '
     return answer[:-1]
