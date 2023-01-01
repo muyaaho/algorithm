@@ -2,18 +2,14 @@ from collections import deque
 
 def solution(s):
     answer = True
-    
     q = deque()
-    for x in s:
-        if x == '(':
-            q.append(x)
-        else:
-            try:
-                q.pop()
-            except:
-                return False
     
-    if not q:
-        return True
-    else:
-        return False
+    for c in s:
+        if c=="(":
+            q.append(c)
+        else:
+            if not q:
+                return False
+            q.pop()
+    if not q: return True
+    else: return False
