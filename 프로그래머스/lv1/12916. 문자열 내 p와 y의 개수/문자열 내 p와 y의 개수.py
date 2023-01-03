@@ -1,2 +1,1 @@
-def solution(s):
-    return s.count('y')+s.count('Y') == s.count('p')+s.count('P')
+solution = lambda s: (S:=s.lower()).count("p")==S.count("y")
