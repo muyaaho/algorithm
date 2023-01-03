@@ -1,19 +1,21 @@
 def solution(n, times):
     answer = 0
-    left = min(times)
-    right = max(times)*n
-
-    while left<=right:
+    l = min(times)
+    r = max(times)*n
+    
+    while l<=r:
+        m = (l+r)//2
         checked = 0
-        mid = (left+right)//2
+        
         for time in times:
-            checked += mid//time
+            checked += m//time
             if checked >= n:
                 break
-                
-        if checked >= n:
-            answer = mid
-            right = mid-1
+        
+        if checked>=n:
+            answer = m
+            r = m-1
         else:
-            left = mid+1
+            l = m+1
+    
     return answer
