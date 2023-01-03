@@ -1,33 +1,26 @@
-#BFS 풀이 
 from collections import deque
 import sys
-input=sys.stdin.readline
 
+input = sys.stdin.readline
+n = int(input())
+graph = [[] for _ in range(n+1)]
+visit = [0]*(n+1)
 
-N=int(input())
-visited=[False]*(N+1)
-answer=[0]*(N+1)
-E=[[] for _ in range(N+1)]
-for i in range(N-1):
-    S,D=map(int,input().split())
-    E[S].append(D)
-    E[D].append(S)
+for x in range(n-1):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
 
+q = deque()
+q.append(1)
+visit[1] = 1
 
-def bfs(E,v,visited):
-    que=deque([v])
-    visited[v]=True
-    while que:
-        x=que.popleft()
-        for i in E[x]:
-            if not visited[i]:
-                answer[i]=x
-                que.append(i)
-                visited[i]=True
-           
+while q:
+    now = q.popleft()
+    for to in graph[now]:
+        if visit[to] == 0:
+            visit[to] = now
+            q.append(to)
 
-            
-bfs(E,1,visited)
-
-for i in range(2,N+1):
-        print(answer[i])
+for x in visit[2:]:
+    print(x)
