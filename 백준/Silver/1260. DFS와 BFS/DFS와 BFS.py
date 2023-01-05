@@ -1,35 +1,39 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
 
-n, m, k = map(int, input().split())
-graph = [[0]*(n+1) for _ in range(n+1)]
+n, m, v = map(int, input().split())
+edge = [list(map(int, input().split())) for _ in range(m)]
+graph = [[] for _ in range(n+1)]
 
-for _ in range(m):
-    a, b = map(int, input().split())
-    graph[a][b] = graph[b][a] =1
+for start, to in sorted(edge):
+    graph[start].append(to)
+    graph[to].append(start)
 
-vdfs = [0]*(n+1)
-vbfs = [0]*(n+1)
+ddd = [0]*(n+1)
+bbb = [0]*(n+1)
 
 def dfs(now):
-    vdfs[now] = 1
+    ddd[now] = 1
     print(now, end=' ')
-    for end in range(1, n+1):
-        if vdfs[end] == 0 and graph[now][end] == 1:
-            dfs(end)
+    for to in sorted(graph[now]):
+        if ddd[to] == 0:
+            dfs(to)
 
 def bfs(now):
     q = deque()
     q.append(now)
-    vbfs[now] = 1
+    bbb[now] = 1
 
     while q:
-        now = q.popleft()
-        print(now, end = ' ')
-        for end in range(1, n+1):
-            if vbfs[end] == 0 and graph[now][end]==1:
-                q.append(end)
-                vbfs[end] = 1
+        n = q.popleft()
+        print(n, end=' ')
+        for to in sorted(graph[n]):
+            if bbb[to] == 0:
+                bbb[to] = 1
+                q.append(to)
 
-dfs(k)
+dfs(v)
 print()
-bfs(k)
+bfs(v)
+
