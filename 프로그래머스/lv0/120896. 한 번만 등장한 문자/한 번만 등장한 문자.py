@@ -1,3 +1,2 @@
 def solution(s):
-    answer = [x for x in s if s.count(x)==1]
-    return ''.join(sorted(answer))
+    return ''.join([x for x in sorted(s) if s.count(x)==1])
