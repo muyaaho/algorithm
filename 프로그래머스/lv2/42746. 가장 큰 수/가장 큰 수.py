@@ -1,3 +1,4 @@
 def solution(numbers):
-    numbers = list(map(str, numbers))
-    return str(int(''.join(sorted(numbers, key= lambda x: x*3, reverse=True))))
+    n = list(map(str, numbers))
+    n = sorted(n, key=lambda x: x*3, reverse=True)
+    return str(int(''.join(n)))
