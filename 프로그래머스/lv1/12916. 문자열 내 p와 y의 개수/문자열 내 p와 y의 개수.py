@@ -1,1 +1,3 @@
-solution = lambda s: (S:=s.lower()).count("p")==S.count("y")
+def solution(s):
+    s=s.lower()
+    return True if s.count('p') == s.count('y') else False 
