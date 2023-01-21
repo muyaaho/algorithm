@@ -1,19 +1,15 @@
 n, m = map(int, input().split())
 arr = []
 
-def f():
-    if len(arr)==m:
+def f(start):
+    if len(arr) == m:
         print(*arr)
         return
-    
-    for x in range(1, n+1):
-        if not arr:
+
+    for x in range(start, n+1):
+        if x not in arr:
             arr.append(x)
-            f()
-            arr.pop(-1)
-        elif arr[-1] < x:
-            arr.append(x)
-            f()
-            arr.pop(-1)
-            
-f()
+            f(x+1)
+            arr.pop()
+
+f(1)
