@@ -1,7 +1,8 @@
 def solution(lines):
-    check = [0]*202
-    for a, b in lines:
-        for i in range(a, b):
-            check[i+100] += 1
+    arr = [0]*202
     
-    return len([x for x in check if x>1])
+    for start, end in lines:
+        for i in range(start, end):
+            arr[i] += 1
+    
+    return len([1 for x in arr if x > 1])
