@@ -7,9 +7,8 @@ def f(start):
         return
 
     for x in range(start, n+1):
-        if x not in arr:
-            arr.append(x)
-            f(x+1)
-            arr.pop()
+        arr.append(x)
+        f(x+1)
+        arr.pop()
 
 f(1)
