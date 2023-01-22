@@ -1,7 +1,10 @@
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-arr = {input() for _ in range(n)}
+arr = {input().rstrip() for _ in range(n)}
 
 arr = sorted(arr)
-arr = sorted(arr, key=lambda x: (len(x)))
+arr = sorted(arr, key=len)
 
 print(*arr, sep='\n')
