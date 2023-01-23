@@ -1,18 +1,25 @@
 def solution(progresses, speeds):
-    print(progresses)
-    print(speeds)
     answer = []
-    time = 0
-    count = 0
-    while len(progresses)> 0:
-        if (progresses[0] + time*speeds[0]) >= 100:
-            progresses.pop(0)
-            speeds.pop(0)
-            count += 1
+
+    left = [0]*(len(progresses))
+    for i in range(len(progresses)):
+        p = progresses[i]
+        s = speeds[i]
+        if (a:=(100-p)/s)%1 > 0:
+            left[i] += 1
+        left[i] += (100-p)//s
+
+    stack = []
+    for x in left:
+        if not stack:
+            stack.append(x)
+        elif stack[0] >= x:
+            stack.append(x)
         else:
-            if count > 0:
-                answer.append(count)
-                count = 0
-            time += 1
-    answer.append(count)
+            answer.append(len(stack))
+            stack.clear()
+            stack.append(x)
+    if stack:
+        answer.append(len(stack))
+
     return answer
