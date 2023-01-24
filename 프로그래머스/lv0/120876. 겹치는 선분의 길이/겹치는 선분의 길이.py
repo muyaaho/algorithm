@@ -1,8 +1,11 @@
+# set으로 간단하게 하는 방법 모르겠다
+
 def solution(lines):
-    arr = [0]*202
+    coord = [0]*202
+    answer = 0
     
-    for start, end in lines:
-        for i in range(start, end):
-            arr[i] += 1
+    for to, end in lines:
+        for i in range(to, end):
+            coord[i] += 1
     
-    return len([1 for x in arr if x > 1])
+    return len([1 for i in coord if i > 1])
