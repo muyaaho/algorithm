@@ -57,7 +57,5 @@
 <li>11과 011은 같은 숫자로 취급합니다.</li>
 </ul>
 
-<p><a href="http://2009.nwerc.eu/results/nwerc09.pdf" target="_blank" rel="noopener">출처</a></p>
-
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
