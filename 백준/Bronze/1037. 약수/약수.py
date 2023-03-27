@@ -1,10 +1,7 @@
-import sys 
+import sys
 input = sys.stdin.readline
-from math import lcm
 
-cnt = int(input())
+n = int(input())
 arr = list(map(int, input().split()))
-arr.sort()
-ans = lcm(*arr)
 
-print(ans*arr[0] if ans in arr else ans)
+print(max(arr)*min(arr))
