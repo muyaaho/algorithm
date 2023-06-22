@@ -8,7 +8,7 @@ q = deque(todo)
 
 cnt = 0
 flag = False
-while cnt < 5:
+while cnt < 3:
     r_num = q.index(first[0])
     # print(cnt)
     # print(r_num)
