@@ -1,24 +1,27 @@
 from collections import deque
 
-v = int(input())
-e = int(input())
-network = [list(map(int, input().split())) for _ in range(e)]
-network.sort()
-queue = deque()
-answer = []
-graph = [[] for _ in range(v+1)]
+n = int(input())
+graph = [[] for _ in range(n+1)]
 
-for start, end in network:
-    graph[start].append(end)
-    graph[end].append(start)
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    # print(a, b)
+    # print(graph)
+    graph[a].append(b)
+    graph[b].append(a)
 
-queue.append(1)
+q = deque()
+visited = [False] * (n+1)
+q.append(1)
+visited[1] = True
 
-while queue:
-    now = queue.popleft()
-    for end in graph[now]:
-        if end not in answer:
-            answer.append(end)
-            queue.append(end)
+answer = 0
+while q:
+    now = q.popleft()
+    for togo in graph[now]:
+        if not visited[togo]:
+            visited[togo] = True
+            answer += 1
+            q.append(togo)
 
-print(len(answer)-1)
+print(answer)
