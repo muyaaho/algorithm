@@ -7,17 +7,13 @@ def list_print(arr, is_reverse):
     else:
         if is_reverse:
             arr = list(reversed(arr))
-        print('[',end='')
-        for x in arr[:-1]:
-            print(f'{x},', end='')
-        print(f'{arr[-1]}]')
+        print('[' + ','.join(arr)+']')
 
 for _ in range(int(input())):
     cmds = input()
     n = int(input())
-    try:
-        arr = list(map(int, input().rstrip().strip('[]').split(',')))
-    except:
+    arr = input().rstrip().strip('[]').split(',')
+    if '' in arr:
         arr = []
     
     is_error = False
