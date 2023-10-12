@@ -42,3 +42,6 @@
 
 - set을 사용할 경우 PyPy3로 겨우 성공함
 - dp처럼 인덱스로 값을 접근하도록 하면 메모리를 크게 줄일 수 있음
+- ['types.GenericAlias'](https://www.acmicpc.net/board/view/73336)
+	- list({set})으로 했을 때 나오는 에러
+ 	- 대신 [x for x in set] 이런 식으로 리스트로 바꿔야됨
