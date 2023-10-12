@@ -40,3 +40,51 @@
 
  <p>각 테스트 케이스에 대해서, 입력으로 주어진 정수 배열에 함수를 수행한 결과를 출력한다. 만약, 에러가 발생한 경우에는 error를 출력한다.</p>
 
+### 메모
+**deque**
+
+![image](https://github.com/muyaaho/python_coding/assets/76798969/2abc9c0c-938c-4899-8d23-dc5919922551)
+
+- 참고: https://www.acmicpc.net/source/67778394
+- 시간이 크게 줄어듬
+
+**strip**
+
+```python
+>>>'www.example.com'.strip('cmowz.')
+'example'
+```
+
+**try**
+
+```python
+try:
+  ...
+except Exception:
+  ...
+```
+
+`reversed()` vs `[::-1]`
+
+- `reversed()`: 제자리에서 바꿈
+- `[::-1]`: 복사본을 만듬
+
+**반례**
+
+- 참고: https://www.acmicpc.net/board/view/127276
+
+**print**
+
+```python
+print('[',end='')
+    for x in arr[:-1]:
+        print(f'{x},', end='')
+    print(f'{arr[-1]}]')
+```
+
+```python
+print('[' + ','.join(arr)+']')
+```
+
+- join안에 int로 된 배열은 안됨, map으로 str 만들기
+- `",".join(map(int, arr))`
