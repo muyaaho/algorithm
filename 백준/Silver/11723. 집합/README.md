@@ -37,3 +37,8 @@
 
  <p><code>check</code> 연산이 주어질때마다, 결과를 출력한다.</p>
 
+### 메모
+![image](https://github.com/muyaaho/python_coding/assets/76798969/0732aa90-adaf-4173-9802-a99e2fd6cb0c)
+
+- set을 사용할 경우 PyPy3로 겨우 성공함
+- dp처럼 인덱스로 값을 접근하도록 하면 메모리를 크게 줄일 수 있음
