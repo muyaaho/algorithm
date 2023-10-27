@@ -1,23 +1,28 @@
 import sys
 input = sys.stdin.readline
-
+n = int(input())
 stack = []
-cnt = 1
 answer = []
-for _ in range(int(input())):
-    n = int(input())
+isBreak = False
 
-    # 꼭 stack[-1]로 안해도 됨! cnt가 있음
-    while cnt <= n:
-        stack.append(cnt)
-        cnt += 1
+arr = [int(input()) for _ in range(n)]
+
+num = 1
+for x in arr:
+    if isBreak:
+        break
+    while num <= x:
+        stack.append(num)
+        num += 1
         answer.append('+')
-
-    if stack[-1] == n:
+    
+    if stack[-1] == x:
         stack.pop()
         answer.append('-')
     else:
         print('NO')
-        exit(0)
-
-print(*answer, sep='\n')
+        isBreak = True
+        break
+# print(isBreak)
+if not isBreak:
+    print(*answer, sep='\n')
