@@ -1,5 +1,8 @@
-a = input()
-b = input()
+import sys
+input = sys.stdin.readline
+
+a = input().rstrip()
+b = input().rstrip()
 
 width = len(a)+1
 length = len(b)+1
@@ -13,4 +16,4 @@ for i in range(1, width):
         else:
             dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
-print(max(dp[-1]))
+print(dp[-1][-1])
