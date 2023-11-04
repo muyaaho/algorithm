@@ -1,6 +1,6 @@
 from heapq import heappush, heappop
 import sys
-input =sys.stdin.readline
+input = sys.stdin.readline
 
 n, k = map(int, input().split())
 gems = [tuple(map(int, input().split())) for _ in range(n)]
@@ -16,6 +16,6 @@ for bag in bags:
         heappush(tmp, -gems[0][1])
         heappop(gems)
     if tmp:
-        answer -= tmp[0]
-        heappop(tmp)
+        answer -= heappop(tmp)
+
 print(answer)
