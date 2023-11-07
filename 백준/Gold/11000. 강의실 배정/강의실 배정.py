@@ -2,20 +2,16 @@ from heapq import heappush, heappop
 import sys
 input = sys.stdin.readline
 
-arr = []
+n = int(input())
+graph = [tuple(map(int, input().split())) for _ in range(n)]
 
-for _ in range(int(input())):
-    arr.append(tuple(map(int, input().split())))
+graph.sort()
 
-arr.sort()
-
-h = [0]
-
-for start, end in arr:
-    if start >= h[0]:
-        heappop(h)
-        heappush(h, end)
+arr = [graph[0][1]]
+for s, t in graph[1:]:
+    if arr[0] <= s:
+        heappush(arr, t)
+        heappop(arr)
     else:
-        heappush(h, end)
-
-print(len(h))
+        heappush(arr, t)
+print(len(arr))
