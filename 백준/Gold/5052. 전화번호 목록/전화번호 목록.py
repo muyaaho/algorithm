@@ -6,11 +6,7 @@ for _ in range(int(input())):
     nums = sorted(list(input().rstrip() for _ in range(n)))
     isNo = False
     for i in range(n-1):
-        try:
-            if nums[i+1].index(nums[i]) == 0:
-                isNo=True
-                break
-        except:
-            continue
-        
+        if nums[i+1].find(nums[i]) == 0:
+            isNo = True
+            break
     print('NO' if isNo else 'YES')
