@@ -7,20 +7,15 @@ answer =[]
 isAngle = False
 isBlank = False
 for x in s:
-    # print(x)
-    # print(answer)
-    # print(isAngle, isBlank)
+
     if isAngle:
         if x == '>':
             isAngle = False
             angles += x
-            # print(angles)
             answer.append(angles)
-            # print(answer)
             angles = ""
             continue
         angles += x
-        # print(angles)
         continue
     if isBlank:
         if x != ' ':
@@ -39,7 +34,6 @@ for x in s:
             word = ""
         isAngle = True
         angles += x
-        # print(angles)
         continue
     
     
