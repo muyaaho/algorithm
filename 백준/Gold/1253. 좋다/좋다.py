@@ -5,12 +5,12 @@ n = int(input())
 arr = list(map(int, input().split()))
 arr.sort()
 
-answer = 0
+
+cnt = 0
 for i in range(n):
     goal = arr[i]
     start = 0
-    end = n-1
-    
+    end = n-1   
     while start < end:
         if arr[start] + arr[end] == goal:
             if start == i:
@@ -18,11 +18,10 @@ for i in range(n):
             elif end == i:
                 end -= 1
             else:
-                answer += 1
-                # print(goal, arr[start], arr[end])
+                cnt += 1
                 break
-        elif arr[start] + arr[end] < goal:
-            start += 1
-        else:
+        elif arr[start] + arr[end] > goal:
             end -= 1
-print(answer)
+        else:
+            start +=1 
+print(cnt)
