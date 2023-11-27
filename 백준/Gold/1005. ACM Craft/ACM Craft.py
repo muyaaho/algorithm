@@ -8,11 +8,11 @@ for _ in range(int(input())):
     
     indegree = [0] * (n+1)
     graph = [[] for _ in range(n+1)]
-    
     for _ in range(k):
         x, y = map(int, input().split())
-        graph[x].append(y)
         indegree[y] += 1
+        graph[x].append(y)
+    
     w = int(input())
     
     q = deque()
@@ -24,11 +24,9 @@ for _ in range(int(input())):
     
     while q:
         now = q.popleft()
-        
         for next in graph[now]:
-            indegree[next] -= 1
-            dp[next] = max(dp[next], dp[now]+arr[next-1])
+            indegree[next]-=1
+            dp[next] = max(dp[next], dp[now] + arr[next-1])
             if indegree[next] == 0:
                 q.append(next)
-    
     print(dp[w])
