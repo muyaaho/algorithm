@@ -1,19 +1,17 @@
-import sys
-input = sys.stdin.readline
-
 r, c = map(int, input().split())
-arr = [list(input().rstrip()) for _ in range(r)]
+arr = [list(input()) for _ in range(r)]
 
 s = set()
+answer = 1
+s.add(arr[0][0])
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
 
-ans = 1
 def dfs(x, y, cnt):
-    # print(s)
-    global ans
-    ans = max(ans, cnt)
+    global answer
+    
+    answer = max(answer, cnt)
     
     for i in range(4):
         nx = x + dx[i]
@@ -23,6 +21,5 @@ def dfs(x, y, cnt):
             dfs(nx, ny, cnt+1)
             s.remove(arr[nx][ny])
 
-s.add(arr[0][0])
 dfs(0, 0, 1)
-print(ans)
+print(answer)
