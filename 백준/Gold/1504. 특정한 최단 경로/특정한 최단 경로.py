@@ -2,9 +2,9 @@ from heapq import heappush, heappop
 import sys
 input = sys.stdin.readline
 
+INF = int(1e9)
 n, e = map(int, input().split())
 graph = [[] for _ in range(n+1)]
-INF = int(1e9)
 
 for _ in range(e):
     a, b, c = map(int, input().split())
@@ -21,10 +21,8 @@ def dijkstra(start, end):
     
     while q:
         dist, now = heappop(q)
-        
         if dist > distance[now]:
             continue
-        
         for cost, next in graph[now]:
             c = cost + dist
             if c < distance[next]:
