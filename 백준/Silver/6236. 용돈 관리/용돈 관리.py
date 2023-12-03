@@ -4,21 +4,20 @@ input = sys.stdin.readline
 n, m = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
 
-start = 0
+start = min(arr)
 end = sum(arr)
 
-answer =0
 while start <= end:
     mid = (start + end)//2
-    s = mid
+    charge = mid
     cnt = 1
     
     for money in arr:
-        if s < money:
+        if money > charge:
             cnt += 1
-            s = mid
-        s -= money
-        # print(s)
+            charge = mid
+        charge -= money
+    
     
     if cnt > m or mid < max(arr):
         start = mid+1
