@@ -35,29 +35,23 @@ def change(cmd):
 def find_axis(cmd, x, y):
     if cmd == 1 and y + 1 < m:
         y += 1
+        return x, y, True
     elif cmd == 2 and y - 1 >= 0:
         y -= 1
+        return x, y, True
     elif cmd == 3 and x - 1 >= 0:
         x -= 1
+        return x, y, True
     elif cmd == 4 and x + 1 < n:
         x += 1
-    return x, y
+        return x, y, True
+    return x, y, False
 
-def can_move(cmd, x, y):
-    if cmd == 1 and  y + 1 >= m:
-        return False
-    if cmd == 2 and y - 1 < 0:
-        return False
-    if cmd == 3 and x - 1 < 0:
-        return False
-    if cmd == 4 and x + 1 >= n:
-        return False
-    return True
     
 for cmd in cmds:
-    if not can_move(cmd, x, y):
+    nx, ny, can_move = find_axis(cmd, x, y)
+    if not can_move:
         continue
-    nx, ny = find_axis(cmd, x, y)
     x, y = nx, ny
     change(cmd)
     if arr[nx][ny] == 0:
@@ -65,5 +59,4 @@ for cmd in cmds:
     else:
         dice[0] = arr[nx][ny]
         arr[nx][ny] = 0
-    # print(cmd, dice)
     print(dice[5])
