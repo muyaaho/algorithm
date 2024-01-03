@@ -8,6 +8,7 @@ dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
 distance = [[-1] * m for _ in range(n)]
+distance[0][0] = 0
 def dijkstra():
     q = []
     heappush(q, (0, 0, 0))
@@ -28,4 +29,4 @@ def dijkstra():
                 distance[nx][ny] = c
                 heappush(q, (c, nx, ny))
 dijkstra()
-print(0 if distance[n-1][m-1] < 0 else distance[n-1][m-1])
+print(distance[n-1][m-1])
