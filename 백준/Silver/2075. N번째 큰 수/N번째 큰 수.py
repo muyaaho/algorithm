@@ -1,10 +1,12 @@
 from heapq import heappush, heappop
+import sys
+input = sys.stdin.readline
 
-h = []
 n = int(input())
-
+h = []
 for _ in range(n):
-    numbers = map(int, input().split())
+    numbers = list(map(int, input().split()))
+    
     for num in numbers:
         if len(h) < n:
             heappush(h, num)
