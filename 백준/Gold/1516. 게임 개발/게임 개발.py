@@ -1,8 +1,3 @@
-"""
-시간이 주어졌는데,, 이건 그냥 더하면 되는 건가? 아니면 각 인덱스에 시간 넣기?
-time 이라는 리스트를 만들어야 할지...
-
-"""
 from collections import deque
 import sys
 
@@ -22,9 +17,6 @@ for i in range(1, n + 1):
             break
         graph[x].append(i)
         indegree[i] += 1
-# print(indegree)
-# print(graph)
-# print(time)
 q = deque()
 
 for i in range(1, n + 1):
@@ -34,18 +26,12 @@ for i in range(1, n + 1):
 answer = [0] * (n + 1)
 while q:
     now = q.popleft()
-
     answer[now] += time[now]
-    # print("now:", now)
-    # print("answer[now]:", answer[now])
 
     for next in graph[now]:
         indegree[next] -= 1
         answer[next] = max(answer[now], answer[next])
         if indegree[next] == 0:
-            
-            # print(f"next: {next}, answer[{next}]: {answer[next]}")
             q.append(next)
-    # print("answer:", answer)
 
-print(*answer[1:], sep='\n')
+print(*answer[1:], sep="\n")
