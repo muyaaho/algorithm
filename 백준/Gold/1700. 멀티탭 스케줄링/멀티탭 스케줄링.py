@@ -5,10 +5,8 @@ n, k = map(int, input().split())
 multitap = list(map(int, input().split()))
 
 plugs = []
-count = 0 
-
+count = 0
 for i in range(k):
-    # print(i, plugs)
     if multitap[i] in plugs:
         continue
     
@@ -16,25 +14,24 @@ for i in range(k):
         plugs.append(multitap[i])
         continue
     
-    # 빼야 할 때
-    multitap_idxs = []
+    multitap_idx = []
     hasplug = True
     
     for j in range(n):
+        # 나중에 쓸 목록에 지금 플러그에 있는 것이 있다면
         if plugs[j] in multitap[i:]:
             idx = multitap[i:].index(plugs[j])
         else:
             idx = 101
             hasplug = False
-        multitap_idxs.append(idx)
-    
+        multitap_idx.append(idx)
+        
         if not hasplug:
             break
     
-    plug_out = multitap_idxs.index(max(multitap_idxs))
-    del plugs[plug_out]
+    plugs_out = multitap_idx.index(max(multitap_idx))
+    del plugs[plugs_out]
     plugs.append(multitap[i])
     count += 1
-    
 
 print(count)
