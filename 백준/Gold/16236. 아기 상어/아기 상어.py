@@ -19,11 +19,6 @@ target = 2
 eat_count = 0
 answer = 0
 
-def print_map():
-    for line in arr:
-        print(line)
-    print()
-
 def bfs(sx, sy):
     q = deque()
     q.append((sx, sy))
