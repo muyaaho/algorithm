@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 dp = [0] * (101)
 dp[1] = 1
 dp[2] = 1
