@@ -34,8 +34,7 @@ def bfs(start):
     return distance
         
 for i in range(1, n+1):
-    arr = bfs(i)
-    s = sum([items[i] for i in range(1, n+1) if arr[i] <= m])
-    answer = max(answer, s)
+    arr = bfs(i) 
+    answer = max(answer, sum([items[i] for i in range(1, n+1) if arr[i] <= m]))
 
 print(answer)
