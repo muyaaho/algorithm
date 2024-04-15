@@ -2,20 +2,17 @@ import sys
 input = sys.stdin.readline
 
 for _ in range(int(input())):
-    dict = {}
     n = int(input())
-    if n == 0:
-        print(0)
-        continue
+    dict = {}
     for _ in range(n):
         a, b = input().rstrip().split()
-        if b in dict:
-            dict[b].append(a)
-        else:
+        if b not in dict:
             dict[b] = [a]
+            continue
+        dict[b].append(a)
     
     answer = 1
-    for line in dict:
-        answer *= (len(dict[line])+1)
-        
+    for key in dict:
+        answer *= (len(dict[key]) + 1)
+
     print(answer - 1)
