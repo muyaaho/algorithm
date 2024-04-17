@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 e, s, m = map(int, input().split())
 i = 1
 
