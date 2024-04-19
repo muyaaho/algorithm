@@ -4,7 +4,8 @@ INF = int(1e9)
 
 def bf():
     dist = [INF] * (n+1)
-
+    dist[1] = 0
+    
     for i in range(n):
         for s, e, t in edges:
             if dist[e] > dist[s] + t:
@@ -13,16 +14,18 @@ def bf():
                     return True
     return False
 
+
 for _ in range(int(input())):
     n, m, w = map(int, input().split())
-    edges = []
+    edges =[]
+    
     for _ in range(m):
-        s, e, t = map(int, input().split())
+        s,e,t = map(int, input().split())
         edges.append((s, e, t))
         edges.append((e, s, t))
     
     for _ in range(w):
-        s, e, t = map(int, input().split())
+        s,e, t = map(int, input().split())
         edges.append((s, e, -t))
-
+    
     print('YES' if bf() else 'NO')
