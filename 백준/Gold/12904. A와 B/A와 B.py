@@ -1,21 +1,15 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
-a = input().rstrip()
-b = input().rstrip()
+s = list(input().rstrip())
+t = list(input().rstrip())
 
-def recu(s):
-
-    if s == a:
-        return 1
-    elif len(s) == len(a):
-        return 0
-    
-    if s[-1] == 'A':
-        return recu(s[:-1])
-    elif s[-1] == 'B':
-        return recu(s[:-1][::-1])
+while len(s) != len(t):
+    if t[-1] == 'A':
+        t.pop()
+    elif t[-1] == 'B':
+        t.pop()
+        t.reverse()
     else:
-        return 0
+        break
 
-print(recu(b))
+print(1 if s == t else 0)
