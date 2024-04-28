@@ -1,30 +1,30 @@
 import sys
 input = sys.stdin.readline
 
+n, m = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
+mx = max(map(max, arr))
+
+answer = 0
 def dfs(cnt, s, tmp):
     global answer
     if s + (4-cnt) * mx <= answer:
         return
     
     if cnt == 4:
-        answer = max(answer, s)
+        answer = max(s, answer)
         return
     
     for x, y in tmp:
-        for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
-            nx, ny = dx + x, dy + y
+        for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            nx = x + dx
+            ny = y + dy
             if 0 <= nx < n and 0 <= ny < m and not visited[nx][ny]:
                 visited[nx][ny] = True
                 dfs(cnt + 1, s + arr[nx][ny], tmp + [(nx, ny)])
                 visited[nx][ny] = False
 
-n, m = map(int, input().split())    
-arr = [list(map(int, input().split())) for _ in range(n)]
 visited = [[False] * m for _ in range(n)]
-
-answer = 0
-mx = max(map(max, arr))
-
 for i in range(n):
     for j in range(m):
         visited[i][j] = True
