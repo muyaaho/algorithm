@@ -1,6 +1,6 @@
 
 
-## Intellij에서 알고리즘 문제를 테스트 케이스대로 실행해보자
+## Intellij에서 테스트 케이스대로 실행해보자
 참고: [(AutoCp) Competitive Programming Plugin for Intellij-Based IDEs - Codeforces](https://codeforces.com/blog/entry/92686)
 
 1. pugin에서 “AutoCP” 설치
