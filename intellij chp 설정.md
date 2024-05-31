@@ -1,6 +1,6 @@
 
 
-### Intellij에서 알고리즘 문제를 테스트 케이스대로 실행해보자
+## Intellij에서 알고리즘 문제를 테스트 케이스대로 실행해보자
 참고: [(AutoCp) Competitive Programming Plugin for Intellij-Based IDEs - Codeforces](https://codeforces.com/blog/entry/92686)
 
 1. pugin에서 “AutoCP” 설치
@@ -32,11 +32,11 @@
 6. 현재 파일을 실행하면 테스트 케이스를 실행해 볼 수 있다.
     
     ![image](https://github.com/muyaaho/algorithm/assets/76798969/c278a08e-2bf1-469d-b14e-1d771faeeb1b)
+   <br><br><br>
 
 
 
---- 
-### 추가: 소스 디렉토리 변경하는 방법
+## 추가: 소스 디렉토리 변경하는 방법
 
 
 현재 source root가 아니라서 에러를 잡지 못하는 모습이다.
@@ -55,3 +55,28 @@
 
 ![image](https://github.com/muyaaho/algorithm/assets/76798969/987f5dcd-c8a7-438c-8fba-3837cb0836cf)
 <br><br><br>
+
+
+## 한글 인식 못하는 에러
+
+```
+javac "C:\Workspace\classes\javaProblemSolving\Baekjoon Online Judge\피보나치 수\Main.java" -d "C:\Users\User\AppData\Local\Temp\AutoCp6879799595456284263"
+
+C:\Workspace\classes\javaProblemSolving\Baekjoon Online Judge\�Ǻ���ġ ��\Main.java:1: error: unmappable character (0xED) for encoding x-windows-949
+//  ?��보나�? ?��
+    ^
+C:\Workspace\classes\javaProblemSolving\Baekjoon Online Judge\�Ǻ���ġ ��\Main.java:1: error: unmappable character (0x98) for encoding x-windows-949
+//  ?��보나�? ?��
+          ^
+C:\Workspace\classes\javaProblemSolving\Baekjoon Online Judge\�Ǻ���ġ ��\Main.java:1: error: unmappable character (0xEC) for encoding x-windows-949
+//  ?��보나�? ?��
+            ^
+3 errors
+```
+
+![image](https://github.com/muyaaho/algorithm/assets/76798969/13eac489-7528-48ef-aa83-1e4e46350c9f)
+File Encoding이 `UTF-8`로 되어있을 텐데 이를 `x-windows-949`로 변경해준다
+
+
+[자료](https://doing7.tistory.com/95) 대로 하면 UTF-8로 바꿔야 하는데 이 블로그에 나온 모든 방법을 사용해도 해결되지 않아 그냥 File encoding을 `x-windows-949`로 바꾸었더니 해결되었다!
+
