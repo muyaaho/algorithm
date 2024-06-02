@@ -36,7 +36,7 @@
 
 
 
-## 추가: 소스 디렉토리 변경하는 방법
+## ~~추가: 소스 디렉토리 변경하는 방법~~
 
 
 현재 source root가 아니라서 에러를 잡지 못하는 모습이다.
@@ -55,6 +55,11 @@
 
 ![image](https://github.com/muyaaho/algorithm/assets/76798969/987f5dcd-c8a7-438c-8fba-3837cb0836cf)
 <br><br><br>
+
+### 왜인지 모르겠지만 Backjoon Online Judge 디렉토리를 source root로 지정하면 아래 에러가 난다.
+- source root를 해제했더니 문제를 잘 가져온다. source root를 해제하고 사용해야겠다.
+![image](https://github.com/muyaaho/algorithm/assets/76798969/cb08bec3-711f-4e68-8649-9d08c386c745)
+
 
 
 ## 한글 인식 못하는 에러
