@@ -1,37 +1,37 @@
-import sys; input = sys.stdin.readline
 from heapq import heappush, heappop
+import sys
+input = sys.stdin.readline
 
-def max_sync():
-    while maxq and not visited[maxq[0][1]]:
-        heappop(maxq)
-
-def min_sync():
-    while minq and not visited[minq[0][1]]:
-        heappop(minq)
+def sync (q):
+    while q and not visited[q[0][1]]:
+        heappop(q)
 
 
 for _ in range(int(input())):
-    
-    minq, maxq = [], []
-    visited = [False] * 1_000_001
-    for i in range(int(input())):
-        
-        cmd, n = input().rstrip().split()
+    n = int(input())
+    visited = [False] * n
+    maxq, minq = [], []
+    for i in range(n):
+        cmd, num = input().rstrip().split()
         
         if cmd == 'I':
-            heappush(minq, (int(n), i))
-            heappush(maxq, (-int(n), i))
+            heappush(minq, (int(num), i))
+            heappush(maxq, (-int(num), i))
             visited[i] = True
-        elif n == '1':
-            max_sync()
-            if maxq:
-                visited[maxq[0][1]] = False
-                heappop(maxq)
-        else:
-            min_sync()
+        
+        elif num == '-1':
+            sync(minq)
             if minq:
                 visited[minq[0][1]] = False
                 heappop(minq)
-    max_sync()
-    min_sync()
-    print(f'{-maxq[0][0]} {minq[0][0]}' if minq and maxq else 'EMPTY')
+        
+        else:
+            sync(maxq)
+            if maxq:
+                visited[maxq[0][1]] = False
+                heappop(maxq)
+        
+    sync(maxq)
+    sync(minq)
+    
+    print(f'{-maxq[0][0]} {minq[0][0]}' if maxq and minq else 'EMPTY')
