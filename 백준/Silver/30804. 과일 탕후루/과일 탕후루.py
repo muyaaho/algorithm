@@ -6,10 +6,10 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 nums = [0] * 10
-def sol(l, r, cnt, kind, m):
-    if r == n:
-        return m
-    
+
+l, r, cnt, kind, m = 0, 0, 0, 0, 0
+
+while r < n:
     if nums[arr[r]] == 0:
         kind += 1
     cnt += 1
@@ -24,6 +24,6 @@ def sol(l, r, cnt, kind, m):
         l += 1
     
     m = max(m, cnt)
-    return sol(l, r+1, cnt, kind, m)
+    r += 1
 
-print(sol(0, 0, 0, 0, 0))
+print(m)
