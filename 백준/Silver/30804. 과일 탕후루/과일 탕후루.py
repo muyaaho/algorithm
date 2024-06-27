@@ -1,17 +1,16 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
 
 n = int(input())
 arr = list(map(int, input().split()))
 
-nums = [0] * 10
-
 l, r, cnt, kind, m = 0, 0, 0, 0, 0
+nums = [0] * 10
 
 while r < n:
     if nums[arr[r]] == 0:
         kind += 1
+    
     cnt += 1
     nums[arr[r]] += 1
     
@@ -19,7 +18,6 @@ while r < n:
         nums[arr[l]] -= 1
         if nums[arr[l]] == 0:
             kind -= 1
-            
         cnt -= 1
         l += 1
     
