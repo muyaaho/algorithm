@@ -2,14 +2,17 @@ from collections import deque
 import sys
 input = sys.stdin.readline
 
-v = int(input())
 
-graph =[[] for _ in range(v+1)]
+v = int(input())
+graph = [[] for _ in range(v+1)]
+
 for _ in range(v):
     arr = list(map(int, input().split()))
     n = arr[0]
+    
     for idx in range(1, len(arr)-1, 2):
         graph[n].append((arr[idx], arr[idx+1]))
+
 
 def dfs(start):
     q = deque()
@@ -18,15 +21,16 @@ def dfs(start):
     distance[start] = 0
     
     while q:
-        now, d = q.popleft()
+        now, nowd = q.popleft()
         
-        for next, nd in graph[now]:
+        for next, nextd in graph[now]:
             if distance[next] < 0:
-                distance[next] = d+nd
-                q.append((next, d+nd))
-    
+                distance[next] = nowd + nextd
+                q.append((next, nowd + nextd))
+                
     return distance.index(max(distance)), max(distance)
 
 point, _ = dfs(1)
 _, ans = dfs(point)
+
 print(ans)
