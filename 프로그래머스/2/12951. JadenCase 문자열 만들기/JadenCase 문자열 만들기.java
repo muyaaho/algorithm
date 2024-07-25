@@ -5,14 +5,8 @@ class Solution {
 
         for (int i = 0; i < s.length(); i++) {
             char now = s.charAt(i);
-            if (i == 0 || s.charAt(i-1) == ' ') {
-                answer.append(Character.toUpperCase(now));
-                continue;
-            }
-
-            answer.append(now);
+            answer.append(i == 0 || s.charAt(i-1) == ' ' ? Character.toUpperCase(now) : now);
         }
-
         return answer.toString();
     }
 }
