@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Solution {
     public boolean solution(String[] phone_book) {
