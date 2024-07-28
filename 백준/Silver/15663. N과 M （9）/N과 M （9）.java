@@ -2,47 +2,50 @@ import java.io.*;
 import java.util.*;
 
 class Main {
-    static int n;
-    static int m;
+    static int n, m;
+    static int[] arr, perm;
     static boolean[] visited;
-    static int[] arr;
+    static LinkedHashSet<String> ans;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
+        st = new StringTokenizer(br.readLine());
 
-        StringTokenizer st2 = new StringTokenizer(br.readLine());
         arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(st2.nextToken());
-        }
-        Arrays.sort(arr);
+        perm = new int[m];
         visited = new boolean[n];
-        sol(new ArrayList<>());
+        ans = new LinkedHashSet<>();
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(arr);
+        permutation(0);
+        ans.forEach(System.out::println);
 
 
     }
 
-    public static void sol(ArrayList<Integer> tmp) {
-        if (tmp.size() == m) {
-            tmp.stream().forEach(x -> System.out.print(x+" "));
-            System.out.println();
-            // System.out.println(tmp.toString());
+    static void permutation(int cnt) {
+        if (cnt == m) {
+            StringBuilder sb = new StringBuilder();
+            for (int p : perm)
+                sb.append(p).append(' ');
+            ans.add(sb.toString());
             return;
         }
 
-        int past = 0;
         for (int i = 0; i < n; i++) {
-            if (!visited[i] && arr[i] != past) {
-                visited[i] = true;
-                past = arr[i];
-                tmp.add(arr[i]);
-                sol(tmp);
-                visited[i] = false;
-                tmp.remove(tmp.size()-1);
-            }
+            if (visited[i])
+                continue;
+            visited[i] = true;
+            perm[cnt] = arr[i];
+            permutation(cnt + 1);
+            visited[i] = false;
         }
     }
 }
