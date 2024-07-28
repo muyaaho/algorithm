@@ -25,9 +25,6 @@ class Main {
 
         Arrays.sort(arr);
         permutation(0);
-        ans.forEach(System.out::println);
-
-
     }
 
     static void permutation(int cnt) {
@@ -35,17 +32,21 @@ class Main {
             StringBuilder sb = new StringBuilder();
             for (int p : perm)
                 sb.append(p).append(' ');
-            ans.add(sb.toString());
+            System.out.println(sb.toString());
             return;
         }
 
+        int past = 0;
         for (int i = 0; i < n; i++) {
-            if (visited[i])
-                continue;
-            visited[i] = true;
-            perm[cnt] = arr[i];
-            permutation(cnt + 1);
-            visited[i] = false;
+            if (!visited[i] && arr[i] != past) {
+                visited[i] = true;
+                perm[cnt] = arr[i];
+                permutation(cnt + 1);
+                visited[i] = false;
+                perm[cnt] = 0;
+                past = arr[i];
+            }
+
         }
     }
 }
