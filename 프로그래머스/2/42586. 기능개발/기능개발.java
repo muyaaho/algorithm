@@ -21,7 +21,7 @@ class Solution {
 
         }
         // Arrays.sort(stack);
-        // System.out.println(Arrays.toString(stack));
+        System.out.println(Arrays.toString(stack));
         
         int maxValue = 0;
         for (int i = 0; i < size; i++) {
