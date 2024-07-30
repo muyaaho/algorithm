@@ -5,21 +5,15 @@ class Solution {
         PriorityQueue<Integer> heap = new PriorityQueue<>();
         int answer = 0;
         
-        for (int i = 0; i < scoville.length; i++) {
-            heap.add(scoville[i]);
-        }
-        // System.out.println(heap.peek());
-        // System.out.println(heap.size());
-        
-        while (heap.size() > 1) {
-            if (heap.peek() < K) {
-                heap.offer(heap.poll() + heap.poll() * 2);
-                answer ++;
-                continue;
-            }
-            break;
+        for (int x : scoville) 
+            heap.offer(x);
+
+        while (heap.size() > 1 && heap.peek() < K) {
+            heap.offer(heap.poll() + heap.poll() * 2);
+            answer ++;
+            continue;
         }
         
-        return heap.poll() >= K ? answer : -1;
+        return heap.poll() < K ? -1 : answer;
     }
 }
