@@ -1,13 +1,15 @@
 import java.util.*;
 class Solution {
+    static int hIndex;
     public static int solution(int[] citations) {
-        int answer = 0;
-        Integer[] integerArr = Arrays.stream(citations).boxed().toArray(Integer[]::new);
-        Arrays.sort(integerArr, Comparator.reverseOrder());
-        for (int i = 0; i < integerArr.length; i++) {
-            if (i >= integerArr[i])
-                return i;
+        hIndex = citations.length;
+
+        while (hIndex >= 0) {
+            if (hIndex <= Arrays.stream(citations).filter(x -> x >= hIndex).count()) {
+                return hIndex;
+            }
+            hIndex--;
         }
-        return integerArr.length;
+        return -1;
     }
 }
