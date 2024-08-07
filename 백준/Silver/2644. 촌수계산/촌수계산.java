@@ -33,7 +33,7 @@ class Main {
     }
 
     private static int bfs() {
-        Queue<Integer> q = new ArrayDeque<>();
+        Deque<Integer> q = new ArrayDeque<>();
         q.add(start);
         int[] distance = new int[n+1];
         for (int i = 0; i < n+1; i ++) {
