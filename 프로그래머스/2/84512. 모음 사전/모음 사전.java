@@ -3,22 +3,16 @@ import java.util.*;
 class Solution {
     TreeSet<String> set = new TreeSet<>();
     String[] vowels = {"A", "E", "I", "O", "U"};
+    
     public int solution(String word) {
         int answer = 0;
         
         for (int i = 1; i <= 5; i++) {
             func(i, new StringBuilder());
         }
-        
-        for (String x : set) {
-            answer ++;
-            if (x.equals(word)) 
-                break;
-        }
         // System.out.println(set);
-        // List<String> arr = new ArrayList<String>(set);
-        // return arr.indexOf(word)+1;
-        return answer;
+        List<String> arr = new ArrayList<String>(set);
+        return arr.indexOf(word)+1;
     }
     
     private void func(int targetCnt, StringBuilder sb) {
