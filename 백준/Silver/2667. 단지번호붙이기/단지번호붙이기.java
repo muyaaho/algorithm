@@ -1,66 +1,63 @@
-import java.util.*;
-import java.io.*;
-import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.PriorityQueue;
 
-class Main {
 
-    static Queue<Integer> answer = new PriorityQueue<>();
-    static int n;
-    static int[][] arr;
-    static int[] dx = {0, 0, -1, 1};
-    static int[] dy = {-1, 1, 0, 0};
-    static boolean[][] visited;
+public class Main {
+    
+    static char[][] graph;
+    static int[] dx = new int[]{-1, 1, 0, 0};
+    static int[] dy = new int[]{0, 0, -1, 1};
+    static int count;
 
-    public static void main(String[] args) throws IOException {
+    static void dfs(int x, int y) {
+        graph[x][y] = '3';
+        count++;
+        for (int i = 0; i < 4; i++) {
+            int ix = x + dx[i];
+            int iy = y + dy[i];
+
+            if (graph[ix][iy] == '1') dfs(ix, iy);
+        }
+    }
+    
+    static void getGraph() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        n = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        graph = new char[N+2][N+2];
 
-        arr = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            String[] line = br.readLine().split("");
-            // System.out.println(Arrays.toString(line));
-            for (int j = 0; j < n; j++) {
-                arr[i][j] = Integer.parseInt(line[j]);
+        for (int i = 0; i < N+2; i++) for (int j = 0 ; j < N+2; j++) graph[i][j] = 'x';
+
+        for (int i = 0; i < N; i++) {
+            char[] arr = br.readLine().toCharArray();
+            for (int j  = 0; j < N; j++) {
+                graph[i+1][j+1] = arr[j];
             }
         }
-        visited = new boolean[n][n];
         
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (arr[i][j] == 1 && !visited[i][j]) {
-                    answer.add(bfs(i, j));
-                }
-            }
-        }
-        System.out.println(answer.size());
-        while (!answer.isEmpty())
-            System.out.println(answer.poll());
     }
 
-    private static int bfs(int i, int j) {
-        Deque<Point> q = new ArrayDeque<>();
-        q.offer(new Point(i, j));
-        visited[i][j] = true;
-        int count = 0;
+    public static void main(String[] args) throws IOException{
 
-        while (!q.isEmpty()) {
-            Point point = q.poll();
-            count++;
+        PriorityQueue<Integer> arr = new PriorityQueue<>();
+        int village = 0;
 
-            int nx = 0, ny = 0;
-            for (int k = 0; k < 4; k++) {
-                nx = point.x + dx[k];
-                ny = point.y + dy[k];
+        getGraph();
 
-                if ((0 <= nx && nx < n) && (0 <= ny && ny < n)) {
-                    if (arr[nx][ny] == 1 && !visited[nx][ny]) {
-                        visited[nx][ny] = true;
-                    q.offer(new Point(nx, ny));
-                    }
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph.length; j++) {
+                if (graph[i][j] == '1') {
+                    count = 0;
+                    village++;
+                    dfs(i, j);
+                    arr.add(count);
                 }
             }
         }
-        return count;
+
+        System.out.println(village);
+        while(!arr.isEmpty()) System.out.println(arr.poll());
+
     }
 }
