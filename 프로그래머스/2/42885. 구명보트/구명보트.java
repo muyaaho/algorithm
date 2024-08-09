@@ -8,10 +8,7 @@ class Solution {
         int left = 0, right = people.length-1;
         while (left <= right) {
             if (people[left] + people[right] <= limit) {
-                answer++;
                 left ++;
-                right --;
-                continue;
             }
             answer++;
             right--;
