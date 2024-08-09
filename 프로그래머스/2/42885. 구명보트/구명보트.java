@@ -3,28 +3,20 @@ import java.util.*;
 class Solution {
     public static int solution(int[] people, int limit) {
         int answer = 0;
-
-        ArrayDeque<Integer> arr = new ArrayDeque<>();
         Arrays.sort(people);
-        for (int p : people) {
-            arr.add(p);
+        
+        int left = 0, right = people.length-1;
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
+                answer++;
+                left ++;
+                right --;
+                continue;
+            }
+            answer++;
+            right--;
         }
         
-        while (!arr.isEmpty()) {
-            if (arr.size() > 1) {
-                if (arr.getFirst() + arr.getLast() <= limit) {
-                    arr.removeFirst();
-                    arr.removeLast();
-                    answer++;
-                    continue;
-                }
-                arr.removeLast();
-                answer++;
-            } else {
-                answer ++;
-                break;
-            }
-        }
         return answer;
     }
 }
