@@ -3,7 +3,8 @@ import java.io.*;
 
 class Main {
     public static void main(String[] args) throws IOException{
-        int answer = 0;
+        int answer = 1;
+        // 입력
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
@@ -21,6 +22,7 @@ class Main {
         boolean[] visited = new boolean[n];
         visited[start - 1] = true;
 
+        // BFS
         while (!q.isEmpty()) {
             int now = q.poll();
             for (int i = -1; i < 2; i+=2) {
@@ -29,15 +31,12 @@ class Main {
                 if (0 <= next && next < n && !visited[next]) {
                     visited[next] = true;
                     q.add(next);
+                    answer ++;
                 }
             }
             
         }
 
-        for (boolean x: visited) {
-            if (x) answer++;
-        }
-    
         System.out.println(answer);
     }
 }
