@@ -3,7 +3,6 @@ import java.awt.*;
 
 class Solution {
     public int solution(int[][] maps) {
-        int answer = 0;
         int col = maps.length;
         int row = maps[0].length;
         
