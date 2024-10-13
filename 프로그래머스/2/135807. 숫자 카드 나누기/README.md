@@ -1,6 +1,6 @@
 # [level 2] 숫자 카드 나누기 - 135807 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/135807#) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/135807) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 10월 12일 17:57:52
+2024년 10월 13일 21:53:37
 
 ### 문제 설명
 
