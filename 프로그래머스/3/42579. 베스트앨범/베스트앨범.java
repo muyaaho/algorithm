@@ -15,14 +15,10 @@ class Solution {
                 return genreCount.get(o2.genres).x - genreCount.get(o1.genres).x;
             }if (o1.plays != o2.plays) {
                 return o2.plays - o1.plays;
-
-
             }
             return o1.number - o2.number;
         });
         
-        
-
         for(int i = 0; i < plays.length; i++) {
             q.offer(new Box(genres[i], plays[i], i));
 
@@ -34,13 +30,10 @@ class Solution {
             Box now = q.poll();
             // System.out.println(now);
             if (genreCount.get(now.genres).y < 2) {
-
                 answer.add(now.number);
                 genreCount.get(now.genres).y++;
-
             }
         }
-
         return answer;
     }
 
