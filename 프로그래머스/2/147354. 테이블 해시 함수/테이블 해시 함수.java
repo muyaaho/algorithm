@@ -18,7 +18,7 @@ class Solution {
         int i = 0;
         while (!q.isEmpty() && i < row_end){
             int[] now = q.poll();
-            if (i >= row_begin - 1 && i < row_end) {
+            if (i >= row_begin - 1) {
 
                 int si = 0;
                 for (int x : now) {
