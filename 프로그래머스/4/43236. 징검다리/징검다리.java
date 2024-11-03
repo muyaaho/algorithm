@@ -27,10 +27,8 @@ class Solution {
             else {
                 max = target - 1;
                 
-            }
-            
-        }
-        
+            }   
+        }      
         return answer;
     }
     
@@ -38,12 +36,7 @@ class Solution {
         boolean[] deleted = new boolean[len];
         int now = 0;
         
-        // System.out.println("target: "+target);
-        
-        // 바위를 n개 빼는 과정 (deleted false로 만든다)
-        // 참고로 0과 마지막은 뺄 수 없어!!!
         while (n > 0) {
-            
             if (now + 1 >= len) {
                 now = 0;
                 break;
@@ -65,7 +58,7 @@ class Solution {
             // 여기서 바위를 제거한다.
             if (dist < target) {
                 n--;
-                // 마지막 값은 제거할 수 없어 -> now를 제거해(마지막만. 그래도 됨?) 그리도 태초마을 가
+                // 마지막 값은 제거할 수 없어 -> now를 제거해(마지막만)
                 if (next == len-1) {
                     deleted[now] = true;
                     now = 0;
@@ -82,7 +75,6 @@ class Solution {
         
         // 바위를 제거하고도 작은거 남으면 false, 아니면 true
         
-        // System.out.println("deleted: " + Arrays.toString(deleted));
         // n이 끝나도 남은 거리가 있을 수 있음 -> now라는 건 그 앞은 조건을 만족했기 때문에 뒷부분만 확인하면 됨
         // for문 써서 past를 now로 하고 false인 부분 체크하자 그리고 for문 그대로 끝나버리면 true 리턴하고
         
