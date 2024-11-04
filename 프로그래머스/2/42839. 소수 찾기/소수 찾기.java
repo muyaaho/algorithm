@@ -3,65 +3,52 @@ import java.util.*;
 class Solution {
     Set<Integer> set = new HashSet<>();
     String nums = "";
-    boolean[] prime;
+    boolean[] reversePrime;
+    int numsSize;
     public int solution(String numbers) {
-        int answer = 0;
-        int numSize = numbers.length();
-        prime = primeArr(numSize);
+        numsSize = numbers.length();
+        reversePrime = primeArr();
         nums = numbers;
-        backtr(numSize, 0, new boolean[numSize], new StringBuilder());
-        
-        
-        // System.out.println(set);
-        
-        
+        backtr(0, new boolean[numsSize], new StringBuilder());
         
         return set.size();
     }
     
-    private void backtr(int maxLen, int cnt, boolean[] visited, StringBuilder sb) {
+    private void backtr(int cnt, boolean[] visited, StringBuilder sb) {
         if (sb.length() > 0) {
             int n = Integer.parseInt(sb.toString());
-        if (prime[n])
-            set.add(n);
+            if (!reversePrime[n]) set.add(n);
         }
         
-        
-        if (cnt == maxLen) {    
+        if (cnt == numsSize) {    
             return;
         }
         
-        for (int i = 0; i < maxLen; i++) {
+        for (int i = 0; i < numsSize; i++) {
             if (!visited[i]) {
                 visited[i] = true;
                 sb.append(nums.charAt(i));
-                backtr(maxLen, cnt+1, visited, sb);
+                backtr(cnt+1, visited, sb);
                 sb.deleteCharAt(sb.length() -1);
                 visited[i] = false;
             }
         }
-        
-        
     }
     
-    private boolean[] primeArr (int numSize) {
+    private boolean[] primeArr () {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numSize; i++) {
+        for (int i = 0; i < numsSize; i++) {
             sb.append('9');
         }
         int primeSize = Integer.parseInt(sb.toString()) + 1;
         
         boolean[] prime = new boolean[primeSize];
-        for (int i = 0; i < primeSize; i++) {
-            prime[i] = true;
-        }
-        prime[0] = false;
-        prime[1] = false;
+        prime[0] = true;
+        prime[1] = true;
         
         for (int i = 2; i < primeSize; i++) {
-            if (!prime[i]) continue;
             for (int k = 2*i; k < primeSize; k += i) {
-                prime[k] = false;
+                prime[k] = true;
             }
         }
         return prime;
