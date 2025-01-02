@@ -16,3 +16,7 @@ FROM AIR_POLLUTION
 WHERE LOCATION2 = '수원'
 GROUP BY YEAR
 ORDER BY YEAR
+
+/*
+DATE_FORMAT은 STRING으로 나오고, YEAR는 DATE 타입으로 나온다.. 그래서.. 그래서.. 며칠동안.. 틀렸었다....
+*/
