@@ -1,0 +1,13 @@
+SELECT A.ITEM_ID
+     , B.ITEM_NAME
+     , B.RARITY
+  FROM ( SELECT T2.ITEM_ID
+           FROM ITEM_INFO T1
+              , ITEM_TREE T2
+          WHERE T1.RARITY = 'RARE'
+            AND T1.ITEM_ID = T2.PARENT_ITEM_ID
+       ) A
+       , ITEM_INFO B
+ WHERE A.ITEM_ID = B.ITEM_ID
+ ORDER BY A.ITEM_ID DESC
+   
