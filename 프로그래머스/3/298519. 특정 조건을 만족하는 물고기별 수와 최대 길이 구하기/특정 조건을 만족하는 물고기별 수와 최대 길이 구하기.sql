@@ -1,0 +1,14 @@
+-- 코드를 작성해주세요
+SELECT COUNT(*) FISH_COUNT
+     , MAX(LENGTH) MAX_LENGTH
+     , FISH_TYPE
+  FROM ( SELECT FISH_TYPE
+              , LENGTH
+              , CASE WHEN LENGTH <= 10 OR LENGTH IS NULL THEN 10
+                     ELSE LENGTH 
+                END AS SCALE_LENGTH
+           FROM FISH_INFO
+       ) A
+ GROUP BY FISH_TYPE
+HAVING AVG(SCALE_LENGTH) >= 33
+ ORDER BY FISH_TYPE
