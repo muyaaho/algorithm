@@ -1,0 +1,15 @@
+-- 코드를 입력하세요
+SELECT DATE_FORMAT(B.SALES_DATE, '%Y') YEAR
+     , DATE_FORMAT(B.SALES_DATE, '%c') MONTH
+     , A.GENDER                        GENDER
+     , COUNT(DISTINCT A.USER_ID)       USERS 
+  FROM USER_INFO   A
+     , ONLINE_SALE B
+ WHERE A.USER_ID = B.USER_ID
+   AND A.GENDER IS NOT NULL
+ GROUP BY YEAR
+        , MONTH
+        , GENDER
+ ORDER BY YEAR
+        , DATE_FORMAT(B.SALES_DATE, '%m')
+        , GENDER
