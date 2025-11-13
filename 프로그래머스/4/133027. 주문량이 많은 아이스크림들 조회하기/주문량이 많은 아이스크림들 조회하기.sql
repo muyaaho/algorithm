@@ -1,0 +1,13 @@
+-- 코드를 입력하세요
+SELECT A.FLAVOR
+  FROM ( SELECT FLAVOR
+              , SUM(TOTAL_ORDER) TOT_ORD
+           FROM FIRST_HALF
+          GROUP BY FLAVOR ) A
+     , ( SELECT FLAVOR
+              , SUM(TOTAL_ORDER) TOT_ORD
+           FROM JULY
+          GROUP BY FLAVOR ) B
+ WHERE A.FLAVOR = B.FLAVOR
+ ORDER BY A.TOT_ORD + B.TOT_ORD DESC
+ LIMIT 3
