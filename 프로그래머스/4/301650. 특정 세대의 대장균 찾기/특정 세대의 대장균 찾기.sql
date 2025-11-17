@@ -1,0 +1,21 @@
+-- 코드를 작성해주세요
+WITH RECURSIVE CTE AS 
+( SELECT ID
+       , PARENT_ID
+       , 1 AS N
+    FROM ECOLI_DATA
+   WHERE PARENT_ID IS NULL
+   UNION ALL
+  SELECT T.ID
+       , T.PARENT_ID
+       , N+1 AS N
+    FROM CTE
+       , ECOLI_DATA T
+   WHERE CTE.ID = T.PARENT_ID
+     AND N < 3
+)
+
+SELECT ID
+  FROM CTE
+ WHERE N = 3
+ ORDER BY ID
