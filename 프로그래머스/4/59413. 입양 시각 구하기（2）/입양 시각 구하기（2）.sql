@@ -1,0 +1,20 @@
+-- 코드를 입력하세요
+WITH RECURSIVE CTE AS 
+( SELECT 0 AS N
+   UNION ALL 
+  SELECT N + 1
+    FROM CTE
+   WHERE N < 23
+)
+
+SELECT C.N HOUR
+     , IFNULL(A.COUNT, 0) COUNT
+  FROM ( SELECT DATE_FORMAT(DATETIME, "%k") HOUR
+              , COUNT(*) COUNT
+              , DATE_FORMAT(DATETIME, "%H") ASC_HOUR
+           FROM ANIMAL_OUTS
+          GROUP BY DATE_FORMAT(DATETIME, "%k")
+       ) A
+  RIGHT JOIN CTE C
+     ON A.HOUR = C.N
+  ORDER BY C.N
